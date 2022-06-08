@@ -12,8 +12,6 @@ for _,v in pairs(workspace:GetDescendants()) do
     end
     
     
-game:GetService("Lighting").Bloom:Destroy()
-game:GetService("Lighting").DayColors:Destroy()
 game:GetService("Lighting").InventoryBlur:Destroy()
 game:GetService("Lighting").NightColors:Destroy()
 game:GetService("Lighting").Colors:Destroy()
