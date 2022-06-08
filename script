@@ -10,19 +10,67 @@ for _,v in pairs(workspace:GetDescendants()) do
     v.Material = "Plastic"
     end
     end
-    
-    
-game:GetService("Lighting").InventoryBlur:Destroy()
-game:GetService("Lighting").NightColors:Destroy()
-game:GetService("Lighting").Colors:Destroy()
-game:GetService("Lighting").SunRays:Destroy()
-game:GetService("Lighting").UnderWaterBlur:Destroy()
-game:GetService("Lighting").SettingsBlur:Destroy()
-game:GetService("Lighting").SunRaysAlwaysOn:Destroy()
-game:GetService("Lighting").SunRaysAlwaysOnNight:Destroy()
-game:GetService("Lighting").Blur:Destroy()
-game:GetService("Lighting").DisabledSkyBox:Destroy()
-game:GetService("Lighting").ColorCorrection:Destroy()
-game:GetService("Lighting").SunRays:Destroy()
-game:GetService("Lighting").TRUEColorCorrection:Destroy()
-game:GetService("Lighting").ColorCorrection:Destroy()
+
+local a = game
+local b = a.Workspace
+local c = a.Lighting
+local d = b.Terrain
+d.WaterWaveSize = 0
+d.WaterWaveSpeed = 0
+d.WaterReflectance = 0
+d.WaterTransparency = 0
+c.GlobalShadows = false
+c.FogEnd = 9e9
+c.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for e, f in pairs(a:GetDescendants()) do
+if f:IsA("Part") or f:IsA("Union") or f:IsA("CornerWedgePart") or f:IsA("TrussPart") then
+f.Material = "Plastic"
+f.Reflectance = 0
+elseif f:IsA("Decal") or f:IsA("Texture") then
+f.Transparency = 0
+elseif f:IsA("ParticleEmitter") or f:IsA("Trail") then
+f.Lifetime = NumberRange.new(0)
+elseif f:IsA("Explosion") then
+f.BlastPressure = 0
+f.BlastRadius = 0
+elseif f:IsA("Fire") or f:IsA("SpotLight") or f:IsA("Smoke") or f:IsA("Sparkles") then
+f.Enabled = false
+elseif f:IsA("MeshPart") then
+f.Material = "Plastic"
+f.Reflectance = 0
+f.TextureID = 10385902758728957
+end
+end
+for e, g in pairs(c:GetChildren()) do
+if
+g:IsA("BlurEffect") or g:IsA("SunRaysEffect") or g:IsA("ColorCorrectionEffect") or g:IsA("BloomEffect") or
+g:IsA("DepthOfFieldEffect")
+then
+g.Enabled = false
+end
+end
+sethiddenproperty(game.Lighting, "Technology", "Compatibility")
+-- // InfYield Edited Antilag \\ --
+game:GetService("Lighting").GlobalShadows = false
+	game:GetService("Lighting").FogEnd = 9e9
+
+	for i,v in pairs(game:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		end
+	end
+
+	for i,v in pairs(game:GetService("Lighting"):GetDescendants()) do
+		if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+			v.Enabled = false
+		end
+	end
