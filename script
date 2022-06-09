@@ -1,6 +1,7 @@
+-- // Synapse only \\ --
 setfpscap(5)
 
-
+-- // Plasticify
 for _,v in pairs(workspace:GetDescendants()) do
     if v.ClassName == "Part"
     or v.ClassName == "SpawnLocation"
@@ -10,7 +11,7 @@ for _,v in pairs(workspace:GetDescendants()) do
     v.Material = "Plastic"
     end
     end
-
+-- // Rendering and such \\ ---
 local a = game
 local b = a.Workspace
 local c = a.Lighting
